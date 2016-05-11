@@ -1,0 +1,24 @@
+{
+  "name": "active-snippets",
+  "version": "0.0.1",
+  "description": "Active-Snippets is a bit advanced snippet manager, written for developers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harish2704/active-snippets.git"
+  },
+  "keywords": [
+    "snippets",
+    "boilerplate",
+    "template"
+  ],
+  "author": "Harish.K <harish2704.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harish2704/active-snippets/issues"
+  },
+  "homepage": "https://github.com/harish2704/active-snippets#readme"
+}
