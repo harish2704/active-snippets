@@ -1,7 +1,7 @@
 # Active-Snippets 
 Active-Snippets is a bit advanced snippet manager, written for developers
 
-## [Demo Link](http://inflection.readthedocs.io/en/latest/)
+## [Demo Link](http://templates2-harish2704.rhcloud.com/)
 
 ## Details
 
