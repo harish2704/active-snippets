@@ -2,11 +2,11 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var enabledSyntaxes = require( './src/ace-syntaxes' );
+var enabledSyntaxes = require( './frontend/ace-syntaxes' );
 
 var entries = {
-  main: './src/index',
-  styles: './src/app.less',
+  main: './frontend/index',
+  styles: './frontend/app.less',
   languages: enabledSyntaxes.map( v => 'brace/mode/' + v )
   // languages: enabledSyntaxes.map( v => 'react-codemirror/node_modules/codemirror/mode/' + v +'/' + v ),
 };
@@ -52,14 +52,14 @@ module.exports = {
         loaders: [
           'babel-loader'
         ],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'frontend')
       },
       {
         test: /\.jsx$/,
         loaders: [
           'babel-loader'
         ],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'frontend')
       },
       { test: /\.css$/, loader: 'style!css' },
       {

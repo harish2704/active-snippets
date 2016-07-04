@@ -29,6 +29,8 @@ export default class TemplateList extends Component {
     return(
       <div className="row">
         <br/>
+        <br/>
+        <br/>
         <div className="col-md-12">
           <Link to="template-create" className="btn btn-success">New</Link>
           <br/>
