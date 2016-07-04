@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var enabledSyntaxes = require( './src/ace-syntaxes' );
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var entries = {
   main: [ 
