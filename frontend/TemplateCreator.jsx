@@ -59,9 +59,9 @@ export default class TemplateCreator extends Component {
   saveTemplate(){
     var task;
     if( this.state.isEditing ){
-      task = Api.updateTemplate( this.props.params.templateId, this.state.createdTemplate );
+      task = Api.updateSnippets( this.props.params.templateId, this.state.createdTemplate );
     } else {
-      task = Api.saveTemplate( this.state.createdTemplate );
+      task = Api.createSnippets( this.state.createdTemplate );
     }
     task.then( (res) => {
       console.log( 'Template saved', res );

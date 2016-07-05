@@ -2,67 +2,53 @@
  * This file was auto-generated from the API controllers using this tool
  * https://github.com/harish2704/expose-controllers-http
  *
- * Generated-At: Mon Jul 04 2016 23:20:16 GMT+0530 (IST)
+ * Generated-At: Tue Jul 05 2016 09:37:38 GMT+0530 (IST)
  */
 
-function bindActions( actions, thisVal ){
-  Object.keys(actions).forEach(function(action){
-    actions[action] = actions[action].bind(thisVal);
-  });
-}
 
 
-function Api(  ){
 
-  /*
-   * Bind all controller methods 
-   */
-  bindActions( this.auth, this );
-  bindActions( this.snippets, this );
-  bindActions( this.users, this );
-}
+/**
+* Abstract class Api.
+* Extend this class and implement _request method using any available http client libraries
+*/
+function Api(){ };
 
-
-Api.prototype._request = function( method, path, opts ){
-  throw new Error('_request method need to be implemented');
-};
 
 
 
 /*
  * auth Controller 
  */
-var auth = {};
-Api.prototype.auth = auth;
 
 /* Methods */
 
-auth.postRegister = function( data ){
+Api.prototype.postRegisterAuth = function( data ){
     return this._request( 'post', '/auth/register', { body: data } );
 };
 
 
-auth.getVerify = function( data ){
+Api.prototype.getVerifyAuth = function( data ){
     return this._request( 'get', '/auth/verify', { query: data } );
 };
 
 
-auth.getProfile = function( data ){
+Api.prototype.getProfileAuth = function( data ){
     return this._request( 'get', '/auth/profile', { query: data } );
 };
 
 
-auth.getLogout = function( data ){
+Api.prototype.getLogoutAuth = function( data ){
     return this._request( 'get', '/auth/logout', { query: data } );
 };
 
 
-auth.postLogin = function( data ){
+Api.prototype.postLoginAuth = function( data ){
     return this._request( 'post', '/auth/login', { body: data } );
 };
 
 
-auth.patchProfile = function( data ){
+Api.prototype.patchProfileAuth = function( data ){
     return this._request( 'patch', '/auth/profile', { body: data } );
 };
 
@@ -71,13 +57,16 @@ auth.patchProfile = function( data ){
 /*
  * snippets Controller 
  */
-var snippets = {};
-Api.prototype.snippets = snippets;
 
 /* Methods */
 
-snippets.get = function( data ){
+Api.prototype.listSnippets = function( data ){
     return this._request( 'get', '/snippets/', { query: data } );
+};
+
+
+Api.prototype.createSnippets = function( data ){
+    return this._request( 'post', '/snippets/', { body: data } );
 };
 
 
@@ -85,8 +74,6 @@ snippets.get = function( data ){
 /*
  * users Controller 
  */
-var users = {};
-Api.prototype.users = users;
 
 /* Methods */
 

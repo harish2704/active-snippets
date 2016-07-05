@@ -31,15 +31,17 @@ class Api extends BaseApi {
   _request( method, path, args ){
 
     var url = new URI( this.endPoint + path )
-    .query( args.query||{} );
+      .query( args.query||{} );
 
     var opts = {
       method: method,
       headers:{
         accept: 'application/json',
         'content-type': 'application/json',
+        'x-sessionid': this.sessionid,
       },
     }
+    method = method.toUpperCase();
 
     if( args.body && ( [ 'POST', 'PUT', 'PATCH' ].indexOf( method ) > -1 ) ){
       opts.body = JSON.stringify( args.body );
@@ -55,6 +57,11 @@ class Api extends BaseApi {
       });
   }
 
+
+  createSnippets( data ){
+    data.schema = JSON.stringify( data.schema );
+    return super.createSnippets( data );
+  }
 }
 
 

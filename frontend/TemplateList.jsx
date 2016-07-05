@@ -16,7 +16,7 @@ export default class TemplateList extends Component {
   }
 
   componentDidMount(){
-    Api.snippets.get()
+    Api.listSnippets()
     .then( ( data ) => {
       this.setState({
         templates: data.items
@@ -32,7 +32,7 @@ export default class TemplateList extends Component {
         <br/>
         <br/>
         <div className="col-md-12">
-          <Link to="template-create" className="btn btn-success">New</Link>
+          <Link to="/items/new" className="btn btn-success">New</Link>
           <br/>
         </div>
         <div className="col-md-12">
@@ -45,7 +45,7 @@ export default class TemplateList extends Component {
                   <Link params={{ templateId: item.id }} to="template-view" >
                     {item.name}
                   </Link>
-                  <Link className="badge warning pull-right" params={{ templateId: item.id }} to="template-edit">Edit</Link>
+                  <Link className="badge warning pull-right" params={{ templateId: item.id }} to="/items/">Edit</Link>
                 </div>
               </div>
             </li>
