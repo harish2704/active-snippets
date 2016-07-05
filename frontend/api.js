@@ -1,58 +1,58 @@
 // import 'whatwg-fetch';
 import URI from 'urijs';
 import config from '../config';
+import BaseApi from './BaseApi';
 
-class Api{
+class ApiError{
+  constructor( message, status, errors ){
+    this.message = message;
+    this.status = status;
+    this.errors = errors;
+  }
+  static create( res ){
+    return new ApiError( res.message, res._status, res.errors );
+  }
+
+  toString(){
+    return this.message
+  }
+}
+
+class Api extends BaseApi {
 
   constructor(){
+    super();
     this.endPoint = config.apiUrl,
     this.cache = {
       templates: []
     };
   }
 
-  request( path, method = 'GET', data ={}, query = {} ){
+  _request( method, path, args ){
 
     var url = new URI( this.endPoint + path )
-    .query( query );
+    .query( args.query||{} );
 
     var opts = {
       method: method,
       headers:{
         accept: 'application/json',
-        'Content-Type': 'application/json',
+        'content-type': 'application/json',
       },
     }
 
-    if(  [ 'POST', 'PUT', 'PATH' ].indexOf( method ) > -1 ){
-      opts.body = JSON.stringify( data );
+    if( args.body && ( [ 'POST', 'PUT', 'PATCH' ].indexOf( method ) > -1 ) ){
+      opts.body = JSON.stringify( args.body );
     }
 
     return fetch( url, opts )
-    .then( ( res ) => res.json() );
-  }
-
-  getTemplates(){
-    return this.request( '/templates' )
-    .then(( data ) =>{
-      this.cache.templates = data;
-      return data;
-    });
-  }
-
-  getTemplate( id ){
-    var cached = this.cache.templates.filter((item) => item.id == id )[0];
-
-    if( cached ){ return Promise.resolve( cached ); }
-    return this.request( '/templates/' + id );
-  }
-
-  saveTemplate( data ){
-    return this.request( '/templates', 'POST', data );
-  }
-
-  updateTemplate( id, data ){
-    return this.request( '/templates/' + id, 'PUT', data )
+      .then( ( res ) => res.json().then( data=>{ data._status = res.status; return data; }) )
+      .then( function( res ){
+        if( res.success ){
+          return res.data;
+        }
+        return Promise.reject( ApiError.create(res) );
+      });
   }
 
 }

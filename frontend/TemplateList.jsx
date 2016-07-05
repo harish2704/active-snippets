@@ -16,10 +16,10 @@ export default class TemplateList extends Component {
   }
 
   componentDidMount(){
-    Api.getTemplates()
+    Api.snippets.get()
     .then( ( data ) => {
       this.setState({
-        templates: data
+        templates: data.items
       });
     });
   }
