@@ -2,7 +2,7 @@
  * This file was auto-generated from the API controllers using this tool
  * https://github.com/harish2704/expose-controllers-http
  *
- * Generated-At: Tue Jul 05 2016 09:37:38 GMT+0530 (IST)
+ * Generated-At: Tue Jul 05 2016 12:36:48 GMT+0530 (IST)
  */
 
 
@@ -67,6 +67,11 @@ Api.prototype.listSnippets = function( data ){
 
 Api.prototype.createSnippets = function( data ){
     return this._request( 'post', '/snippets/', { body: data } );
+};
+
+
+Api.prototype.updateSnippets = function( data ){
+    return this._request( 'put', '/snippets/', { body: data } );
 };
 
 
