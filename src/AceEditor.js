@@ -9,6 +9,11 @@ const editorProps = {
 
 const editorOpts = {
   useWorker: false,
+  basePath : "/static/brace/",
+  modePath : "/static/brace/mode/",
+  themePath : "/static/brace/theme/",
+  workerPath : "/static/brace/worker/",
+  extPath : "/static/brace/ext/",
 }
 
 
