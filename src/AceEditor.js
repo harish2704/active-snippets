@@ -3,17 +3,26 @@ import React from 'react';
 import AceEditor from 'react-ace';
 import 'brace/theme/monokai';
 
+import ace from 'brace';
+const aceConfigModule = ace.acequire('ace/config');
+
+const aceConfig = {
+  basePath   : "/brace/",
+  modePath   : "/brace/mode/",
+  themePath  : "/brace/theme/",
+  workerPath : "/brace/worker/",
+  // extPath : "/brace/ext/",
+}
+for (const prop in aceConfig) {
+  aceConfigModule.set(prop, aceConfig[prop] );
+}
+
 const editorProps = {
   $blockScrolling: Infinity,
 }
 
 const editorOpts = {
   useWorker: false,
-  basePath : "/static/brace/",
-  modePath : "/static/brace/mode/",
-  themePath : "/static/brace/theme/",
-  workerPath : "/static/brace/worker/",
-  extPath : "/static/brace/ext/",
 }
 
 
