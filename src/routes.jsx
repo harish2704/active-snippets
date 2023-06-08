@@ -5,7 +5,8 @@ import TemplateList from './TemplateList';
 import TemplateCreator from './TemplateCreator';
 
 
-export default ( <Router history={ browserHistory }>
+export default (
+  <Router history={ browserHistory }>
     <Route path="/" >
       <IndexRedirect to="items" />
       <Route name="template-list" path="items" >
@@ -15,4 +16,5 @@ export default ( <Router history={ browserHistory }>
         <Route name="template-edit" path=":templateId/edit" component={TemplateCreator} />
       </Route>
     </Route>
-  </Router>);
+  </Router>
+);

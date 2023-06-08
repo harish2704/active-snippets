@@ -112,7 +112,6 @@ export default class TemplateEditor extends Component {
         <Panel type="success" title="Template Text to be rendered" width={this.props.editorWidth}  >
           <Editor
             mode={this.state.currentFormData.syntax}
-            theme="monokai"
             fontSize={14}
             name="main-editor"
             editorProps={{$blockScrolling: Infinity }}

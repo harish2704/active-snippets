@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AceEditor from 'react-ace';
-import 'brace/theme/monokai';
+// import 'brace/theme/monokai';
 
 import ace from 'brace';
 const aceConfigModule = ace.acequire('ace/config');
@@ -33,7 +33,7 @@ export default function( props ){
       value={props.value}
       onChange={props.onChange}
       mode={props.mode}
-      theme="monokai"
+      theme="iplastic"
       fontSize={14}
       name={props.name}
       editorProps={editorProps}

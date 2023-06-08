@@ -12,7 +12,7 @@ export default class TemplateCreator extends Component {
   constructor(){
     super();
     this.state = {
-      createdTemplate: {}
+      createdTemplate: {},
     };
 
     this.setSchema = this.setSchema.bind(this);
@@ -76,7 +76,14 @@ export default class TemplateCreator extends Component {
   render(){
     return(
       <div className="row">
-
+        <div className="col-md-12">
+          <h2>
+            <Link className="btn" to="template-list" >🏠</Link>
+            {this.state.createdTemplate.name}
+            <Link className="btn btn-primary" to="template-view" params={{templateId: this.props.params.templateId,}}>View</Link>
+          </h2>
+          <br/>
+        </div>
         <TemplateEditor
           template={this.state.createdTemplate}
           onSchemaChange={this.setSchema}
@@ -85,7 +92,7 @@ export default class TemplateCreator extends Component {
           formWidth="12"
           editorWidth="12" />
         <TemplateViewer template={this.state.createdTemplate} width="6" formWidth="12" editorWidth="12" />
-        <div className="col-md-12">
+        <div className="col-md-2">
           <button className="btn btn-success" onClick={this.saveTemplate.bind(this)}>Save Template</button>
         </div>
       </div>

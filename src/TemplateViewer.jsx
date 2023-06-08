@@ -16,6 +16,7 @@ export default class TemplateViewer extends Component {
     this.state = {
       renderedTxt: '',
       formData: null,
+      errorMsg: '',
     };
   }
 
@@ -34,9 +35,13 @@ export default class TemplateViewer extends Component {
         renderedTxt = ejs.render( templateStr, formData );
         this.setState({
           renderedTxt: renderedTxt,
+          errorMsg: '',
         });
       }
     } catch( e ){
+      this.setState({
+        errorMsg: e + '',
+      })
       console.log( e );
     }
   }
@@ -47,7 +52,7 @@ export default class TemplateViewer extends Component {
 
 
   componentWillReceiveProps( nextProps ){
-    console.log( 'recieving props...' );
+    console.log( 'recieving props...', nextProps );
     if( this.state.formData ){
       this.updateRenderedTempalte( this.state.formData );
     }
@@ -67,13 +72,19 @@ export default class TemplateViewer extends Component {
           <Editor
             mode={template.syntax}
             fontSize={14}
-            theme="monokai"
             name="show-template"
             width={null}
             editorProps={{$blockScrolling: Infinity }}
             value={this.state.renderedTxt}
           />
         </Panel>
+        <div className="col-md-12">
+          <pre>
+            <code>
+              {this.state.errorMsg}
+            </code>
+          </pre>
+        </div>
       </div>
     );
   }

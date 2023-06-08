@@ -35,3 +35,4 @@ node_modules
 public/static
 .vscode
 config.js
+public/brace/
