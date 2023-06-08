@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import TemplateEditor from './TemplateEditor';
 import TemplateViewer from './TemplateViewer';
 import Api from './api';
+import { browserHistory } from 'react-router'
+import { Link } from 'react-router';
 
 
 export default class TemplateCreator extends Component {
@@ -32,6 +34,7 @@ export default class TemplateCreator extends Component {
   }
 
   setSchema( data ){
+    console.log('setSchema', data);
     this.setState({
       createdTemplate: {
         name: data.name,
@@ -57,6 +60,7 @@ export default class TemplateCreator extends Component {
   }
 
   saveTemplate(){
+    console.log('saveTemplate', this.state.createdTemplate);
     var task;
     if( this.state.isEditing ){
       task = Api.updateTemplate( this.props.params.templateId, this.state.createdTemplate );
@@ -65,12 +69,14 @@ export default class TemplateCreator extends Component {
     }
     task.then( (res) => {
       console.log( 'Template saved', res );
+      browserHistory.push('/items/' + res.id );
     });
   }
 
   render(){
     return(
       <div className="row">
+
         <TemplateEditor
           template={this.state.createdTemplate}
           onSchemaChange={this.setSchema}

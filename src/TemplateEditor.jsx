@@ -70,6 +70,7 @@ export default class TemplateEditor extends Component {
   }
 
   updateSchema( form ){
+    console.log('updateSchema', form );
     var formProperties = {};
     if( !( form.formData && form.formData.fields ) ) { return; }
     form.formData.fields.forEach(( item ) => {
