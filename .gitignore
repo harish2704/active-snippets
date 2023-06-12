@@ -36,3 +36,5 @@ public/static
 .vscode
 config.js
 public/brace/
+db.json
+*db.json
